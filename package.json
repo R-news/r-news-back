@@ -8,6 +8,7 @@
     "dev": "nodemon",
     "lint:ts": "eslint \"**/*.ts\"",
     "lint:ts:fix": "eslint \"**/*.ts\" --fix",
+    "test:unit": "jest --watch",
     "build": "tsc -p tsconfig.json",
     "prepare": "husky install"
   },
@@ -47,6 +48,7 @@
     "jest": "^29.7.0",
     "lint-staged": "^14.0.1",
     "nodemon": "^3.0.1",
+    "prettier": "^3.0.3",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0"
   }
