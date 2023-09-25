@@ -31,6 +31,10 @@ const articleSchema = new Schema<IArticle>(
                     ref: 'Comment',
                 },
             ],
+            likes: {
+                type: Number,
+                default: 0,
+            },
         },
     },
     { versionKey: false, timestamps: true },

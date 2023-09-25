@@ -1,6 +1,7 @@
 export enum ArticleBlockType {
     CODE = 'CODE',
     IMAGE = 'IMAGE',
+    VIDEO = 'VIDEO',
     TEXT = 'TEXT',
 }
 

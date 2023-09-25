@@ -12,6 +12,10 @@ const commentSchema = new Schema<IComment>(
             type: Schema.Types.ObjectId,
             ref: 'User',
         },
+        likes: {
+            type: Number,
+            default: 0,
+        },
     },
     { versionKey: false, timestamps: true },
 );

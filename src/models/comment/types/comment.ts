@@ -5,4 +5,5 @@ export interface IComment {
     text: string;
     articleId: ObjectId;
     userId: ObjectId;
+    likes: number;
 }

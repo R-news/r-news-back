@@ -17,6 +17,11 @@ export interface ArticleImageBlock extends ArticleBlockBase {
     title: string;
 }
 
+export interface ArticleVideoBlock extends ArticleBlockBase {
+    type: ArticleBlockType.VIDEO;
+    src: string;
+    title: string;
+}
 export interface ArticleTextBlock extends ArticleBlockBase {
     type: ArticleBlockType.TEXT;
     paragraphs: string[];
@@ -26,7 +31,8 @@ export interface ArticleTextBlock extends ArticleBlockBase {
 export type ArticleBlock =
     | ArticleCodeBlock
     | ArticleImageBlock
-    | ArticleTextBlock;
+    | ArticleTextBlock
+    | ArticleVideoBlock;
 
 export interface IArticle {
     _id: string;
@@ -38,4 +44,5 @@ export interface IArticle {
     type: ArticleType;
     blocks: ArticleBlock;
     comments: Array<string>;
+    likes: number;
 }

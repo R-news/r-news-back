@@ -6,7 +6,7 @@ export interface Settings {
 }
 
 export interface IUser {
-    _id: string;
+    _id: ObjectId;
     isPremium: boolean;
     isActivated: boolean;
     activationLink?: string;
