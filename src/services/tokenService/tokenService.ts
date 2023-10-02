@@ -6,6 +6,7 @@ import {
     ACCESS_EXPIRES_IN_MILLI_SECONDS,
     REFRESH_EXPIRES_IN_MILLI_SECONDS,
 } from 'utils/const/tokensExpiresInMilliseconds';
+import { ApiError } from 'utils/erros/cutomErrors';
 
 const { JWT_ACCESS_SECRET, JWT_REFRESH_TOKEN } = process.env;
 
@@ -36,20 +37,15 @@ export const tokenService = {
     },
 
     saveToken: async (userId: ObjectId, refreshToken: string) => {
-        try {
-            const tokenData = await Token.findOne({ user: userId });
-            if (tokenData) {
-                tokenData.refreshToken = refreshToken;
-                return await tokenData.save();
-            }
-
-            const token = await Token.create({ user: userId, refreshToken });
-
-            return token;
-        } catch (e) {
-            console.log(e);
-            throw new Error(e);
+        const tokenData = await Token.findOne({ user: userId });
+        if (tokenData) {
+            tokenData.refreshToken = refreshToken;
+            return await tokenData.save();
         }
+
+        const token = await Token.create({ user: userId, refreshToken });
+
+        return token;
     },
 
     removeToken: async (refreshToken: string) => {
@@ -63,11 +59,19 @@ export const tokenService = {
     },
 
     validateAccessToken(token: string) {
-        const userData = jwt.verify(token, JWT_ACCESS_SECRET);
-        return userData;
+        try {
+            const userData = jwt.verify(token, JWT_ACCESS_SECRET);
+            return userData;
+        } catch {
+            throw ApiError.AuthorizationError();
+        }
     },
     validateRefreshToken(token: string) {
-        const userData = jwt.verify(token, JWT_REFRESH_TOKEN);
-        return userData;
+        try {
+            const userData = jwt.verify(token, JWT_REFRESH_TOKEN);
+            return userData;
+        } catch {
+            throw ApiError.AuthorizationError();
+        }
     },
 };

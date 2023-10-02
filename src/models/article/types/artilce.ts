@@ -35,7 +35,7 @@ export type ArticleBlock =
     | ArticleVideoBlock;
 
 export interface IArticle {
-    _id: string;
+    _id: ObjectId;
     title: string;
     subtitle?: string;
     img?: string;
@@ -44,5 +44,5 @@ export interface IArticle {
     type: ArticleType;
     blocks: ArticleBlock;
     comments: Array<string>;
-    likes: number;
+    likes: Array<ObjectId | string>;
 }

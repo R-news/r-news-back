@@ -25,17 +25,19 @@ const articleSchema = new Schema<IArticle>(
                 },
                 message: 'At least one block is required',
             },
-            comments: [
-                {
-                    type: Schema.Types.ObjectId,
-                    ref: 'Comment',
-                },
-            ],
-            likes: {
-                type: Number,
-                default: 0,
-            },
         },
+        comments: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'User',
+            },
+        ],
+        likes: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'User',
+            },
+        ],
     },
     { versionKey: false, timestamps: true },
 );

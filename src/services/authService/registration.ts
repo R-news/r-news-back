@@ -1,15 +1,14 @@
 import { User } from 'models';
 import { v4 as uuidv4 } from 'uuid';
 import { mailService } from 'services/mailService/mailService';
-import { tokenService } from 'services/tokenService/tokenService';
 import { ApiError } from 'utils/erros/cutomErrors';
+import { getUserWithTokens } from 'utils/helpers';
 
 const { API_URL } = process.env;
 
 interface RegistrationResponse {
     accessToken: string;
     refreshToken: string;
-    email: string;
     role: string;
 }
 
@@ -35,15 +34,5 @@ export const registration = async (
 
     await mailService.sendActivationEmail(email, activationLink);
 
-    const userData = {
-        id: user._id,
-        email: user.email,
-        role: user.role,
-        isActivated: user.isActivated,
-    };
-    const tokens = await tokenService.generateToken(userData);
-
-    await tokenService.saveToken(user._id, tokens.refreshToken);
-
-    return { ...tokens, ...userData };
+    return await getUserWithTokens(user);
 };

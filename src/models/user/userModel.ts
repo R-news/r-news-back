@@ -10,10 +10,6 @@ const userSchema = new Schema<IUser>(
         isActivated: { type: Boolean, default: false },
         activationLink: { type: String },
         email: { type: String, required: true, unique: true },
-        token: {
-            type: String,
-            default: null,
-        },
         role: {
             type: String,
             required: [true, 'Role is required'],
@@ -31,6 +27,12 @@ const userSchema = new Schema<IUser>(
             },
         ],
         bookmarks: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Article',
+            },
+        ],
+        likes: [
             {
                 type: Schema.Types.ObjectId,
                 ref: 'Article',

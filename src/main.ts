@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
 dotenv.config();
-import { authRouter } from './routes/api';
+import { articlesRouter, authRouter, userRouter } from './routes/api';
 import { errorMiddleware } from 'middlewares/errorMiddleware';
 
 const app: Express = express();
@@ -13,11 +13,13 @@ const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short';
 app.use(logger(formatsLogger));
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
+app.use(cors({ credentials: true, origin: process.env.CLIENT_URL }));
 
 app.use(express.static('public'));
 
 app.use('/api/auth', authRouter);
+app.use('/api/articles', articlesRouter);
+app.use('/api/user', userRouter);
 
 app.use(errorMiddleware);
 

@@ -10,9 +10,11 @@ import {
 export const registrationController = async (req: Request, res: Response) => {
     const { email, password, username } = req.body;
     const userData = await authService.registration(email, password, username);
+
     res.cookie(REFRESH_TOKEN, userData.refreshToken, {
         maxAge: REFRESH_EXPIRES_IN_MILLI_SECONDS,
         httpOnly: true, //TODO SECURE,
+        sameSite: 'lax',
     });
 
     return res.status(StatusCodes.OK).json({

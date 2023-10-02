@@ -1,9 +1,10 @@
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Response } from 'express';
+import { RequestWithAuthUser, UserDto } from 'models';
 import { tokenService } from 'services/tokenService/tokenService';
 import { ApiError } from 'utils/erros/cutomErrors';
 
 export const authMiddleware = (
-    req: Request,
+    req: RequestWithAuthUser,
     res: Response,
     next: NextFunction,
 ) => {
@@ -25,9 +26,7 @@ export const authMiddleware = (
             return next(ApiError.AuthorizationError());
         }
 
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        //@ts-ignore TODO
-        req.user = userData;
+        req.user = userData as UserDto;
 
         next();
     } catch (e) {
