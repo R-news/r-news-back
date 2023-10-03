@@ -7,10 +7,10 @@ import {
     REFRESH_EXPIRES_IN_MILLI_SECONDS,
 } from 'utils/const/tokensExpiresInMilliseconds';
 import { ApiError } from 'utils/erros/cutomErrors';
+import { getEnvironmentVariables } from 'environments/environment';
 
-const { JWT_ACCESS_SECRET, JWT_REFRESH_TOKEN } = process.env;
 
-if (!JWT_ACCESS_SECRET || !JWT_REFRESH_TOKEN) {
+if (!getEnvironmentVariables().jwt_access_secret_key || !getEnvironmentVariables().jwt_refresh_secret_key) {
     throw new Error('Environment variable is not set');
 }
 
@@ -19,10 +19,10 @@ type UserData = Pick<IUser, 'email' | 'role'>;
 export const tokenService = {
     generateToken: async (payload: UserData) => {
         try {
-            const accessToken = jwt.sign(payload, JWT_ACCESS_SECRET, {
+            const accessToken = jwt.sign(payload, getEnvironmentVariables().jwt_access_secret_key, {
                 expiresIn: ACCESS_EXPIRES_IN_MILLI_SECONDS,
             });
-            const refreshToken = jwt.sign(payload, JWT_REFRESH_TOKEN, {
+            const refreshToken = jwt.sign(payload, getEnvironmentVariables().jwt_refresh_secret_key, {
                 expiresIn: REFRESH_EXPIRES_IN_MILLI_SECONDS,
             });
 
@@ -60,7 +60,7 @@ export const tokenService = {
 
     validateAccessToken(token: string) {
         try {
-            const userData = jwt.verify(token, JWT_ACCESS_SECRET);
+            const userData = jwt.verify(token, getEnvironmentVariables().jwt_access_secret_key);
             return userData;
         } catch {
             throw ApiError.AuthorizationError();
@@ -68,7 +68,7 @@ export const tokenService = {
     },
     validateRefreshToken(token: string) {
         try {
-            const userData = jwt.verify(token, JWT_REFRESH_TOKEN);
+            const userData = jwt.verify(token, getEnvironmentVariables().jwt_refresh_secret_key);
             return userData;
         } catch {
             throw ApiError.AuthorizationError();

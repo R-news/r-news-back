@@ -1,8 +1,8 @@
+
+import { getEnvironmentVariables } from 'environments/environment';
 import nodemailer from 'nodemailer';
 
-const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, API_URL } = process.env;
-
-if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASSWORD || !API_URL) {
+if (!getEnvironmentVariables().SMTP.HOST || !getEnvironmentVariables().SMTP.PORT || !getEnvironmentVariables().SMTP.USER || !getEnvironmentVariables().SMTP.PASSWORD || !getEnvironmentVariables().urls.api) {
     throw new Error('Environment variable is not set');
 }
 
@@ -11,16 +11,16 @@ const transporter = nodemailer.createTransport({
     port: 465,
     secure: true,
     auth: {
-        user: SMTP_USER,
-        pass: SMTP_PASSWORD,
+        user: getEnvironmentVariables().SMTP.USER,
+        pass: getEnvironmentVariables().SMTP.PASSWORD,
     },
 });
 export const mailService = {
     sendActivationEmail: async (to: string, link: string) => {
         await transporter.sendMail({
-            from: SMTP_USER,
+            from: getEnvironmentVariables().SMTP.USER,
             to,
-            subject: `Account activation on the ${API_URL}`,
+            subject: `Account activation on the ${getEnvironmentVariables().urls.api}`,
             text: '',
             html: `
             <div>

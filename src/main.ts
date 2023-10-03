@@ -3,9 +3,10 @@ import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
-dotenv.config();
+dotenv.config({ path: '.env' });
 import { articlesRouter, authRouter, userRouter } from './routes/api';
 import { errorMiddleware } from 'middlewares/errorMiddleware';
+import { getEnvironmentVariables } from 'environments/environment';
 
 const app: Express = express();
 
@@ -13,7 +14,7 @@ const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short';
 app.use(logger(formatsLogger));
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ credentials: true, origin: process.env.CLIENT_URL }));
+app.use(cors({ credentials: true, origin: getEnvironmentVariables().urls.client }));
 
 app.use(express.static('public'));
 
