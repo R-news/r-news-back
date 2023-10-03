@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { Article } from 'models';
-import { articlePipelines } from 'utils/pipelines/articlePipelines';
+import { Article } from '@src/models';
+import { articlePipelines } from '@src/utils/pipelines/articlePipelines';
 
 export const getMainPageArticlesController = async (
     req: Request,

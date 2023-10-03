@@ -1,4 +1,4 @@
-import { IUser, userTypes } from 'models';
+import { IUser, userTypes } from '@src/models';
 import { ObjectId } from 'mongoose';
 
 export class UserDto {

@@ -1,9 +1,9 @@
-import { UserDto } from 'dtos';
-import { IUser } from 'models';
-import { tokenService } from 'services/tokenService/tokenService';
+import { UserDto } from '@src/dtos';
+import { IUser } from '@src/models';
+import { tokenService } from '@src/services/tokenService/tokenService';
 
 export const getUserWithTokens = async (user: IUser) => {
-    const userData = new UserDto(user).toObject();
+    const userData:any = new UserDto(user).toObject();
     const tokens = await tokenService.generateToken(userData);
 
     await tokenService.saveToken(user._id, tokens.refreshToken);

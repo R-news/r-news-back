@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
-import { authService } from 'services/authService';
+import { authService } from '@src/services/authService';
 import {
     REFRESH_EXPIRES_IN_MILLI_SECONDS,
     REFRESH_TOKEN,
-} from 'utils/const/tokensExpiresInMilliseconds';
+} from '@src/utils/const/tokensExpiresInMilliseconds';
 
 export const registrationController = async (req: Request, res: Response) => {
     const { email, password, username } = req.body;

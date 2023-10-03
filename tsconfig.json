@@ -3,17 +3,20 @@
       "allowJs": false,
       "allowSyntheticDefaultImports": true,
       "emitDecoratorMetadata": true,
-      "esModuleInterop": true,
       "experimentalDecorators": true,
       "isolatedModules": true,
       "lib": ["ES2021"],
       "module": "CommonJS",
       "moduleResolution": "node",
-      "baseUrl": "./src",
-      "outDir": "./dist",
       "skipLibCheck": true,
       "sourceMap": true,
       "strictNullChecks": true,
-      "target": "es2019"
+      "target": "es2019",
+      "outDir": "./dist",
+      "baseUrl": ".",
+      "paths": {
+        "@src/*": ["src/*"]
+      },
+      "esModuleInterop": true
     }
   }

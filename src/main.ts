@@ -1,3 +1,4 @@
+import './utils/config/aliases';
 import express, { Express } from 'express';
 import logger from 'morgan';
 import cookieParser from 'cookie-parser';
@@ -5,8 +6,9 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 dotenv.config({ path: '.env' });
 import { articlesRouter, authRouter, userRouter } from './routes/api';
-import { errorMiddleware } from 'middlewares/errorMiddleware';
-import { getEnvironmentVariables } from 'environments/environment';
+import { getEnvironmentVariables } from '@src/environments/environment';
+import { errorMiddleware } from '@src/middlewares/errorMiddleware';
+
 
 const app: Express = express();
 

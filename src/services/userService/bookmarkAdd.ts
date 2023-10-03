@@ -1,4 +1,4 @@
-import { User } from 'models';
+import { User } from '@src/models';
 import mongoose from 'mongoose';
 
 export const bookmarkAdd = async (articleId: string, userId: string) => {

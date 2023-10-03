@@ -1,13 +1,13 @@
 import { ObjectId } from 'mongoose';
 import jwt from 'jsonwebtoken';
-import { Token } from 'models/token/tokenModel';
-import { IUser } from 'models';
+import { Token } from '@src/models';
+import { IUser } from '@src/models';
 import {
     ACCESS_EXPIRES_IN_MILLI_SECONDS,
     REFRESH_EXPIRES_IN_MILLI_SECONDS,
-} from 'utils/const/tokensExpiresInMilliseconds';
-import { ApiError } from 'utils/erros/cutomErrors';
-import { getEnvironmentVariables } from 'environments/environment';
+} from '@src/utils/const/tokensExpiresInMilliseconds';
+import { ApiError } from '@src/utils/erros/cutomErrors';
+import { getEnvironmentVariables } from '@src/environments/environment';
 
 
 if (!getEnvironmentVariables().jwt_access_secret_key || !getEnvironmentVariables().jwt_refresh_secret_key) {

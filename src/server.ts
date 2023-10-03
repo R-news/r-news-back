@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 import app from "./main";
-import { getEnvironmentVariables } from "environments/environment";
+import { getEnvironmentVariables } from "@src/environments/environment";
 
 mongoose.connect(getEnvironmentVariables().db_host)
   .then(() => {

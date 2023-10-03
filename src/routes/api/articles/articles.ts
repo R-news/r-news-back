@@ -1,4 +1,4 @@
-import { articleController } from 'controllers/articleController';
+import { articleController } from '@src/controllers/articleController';
 import { Router } from 'express';
 
 export const router = Router();

@@ -1,7 +1,7 @@
 import { Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { RequestWithAuthUser } from 'models';
-import { userService } from 'services/userService';
+import { RequestWithAuthUser } from '@src/models';
+import { userService } from '@src/services/userService';
 
 export const bookmarkAddController = async (
     req: RequestWithAuthUser,

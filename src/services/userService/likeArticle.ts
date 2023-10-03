@@ -1,6 +1,6 @@
-import { Article, IArticle, User } from 'models';
+import { Article, IArticle, User } from '@src/models';
 import mongoose from 'mongoose';
-import { ApiError } from 'utils/erros/cutomErrors';
+import { ApiError } from '@src/utils/erros/cutomErrors';
 
 export const likeArticle = async (articleId: string, userId: string) => {
     let article: IArticle | null = null;

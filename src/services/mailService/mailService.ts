@@ -1,5 +1,5 @@
 
-import { getEnvironmentVariables } from 'environments/environment';
+import { getEnvironmentVariables } from '@src/environments/environment';
 import nodemailer from 'nodemailer';
 
 if (!getEnvironmentVariables().SMTP.HOST || !getEnvironmentVariables().SMTP.PORT || !getEnvironmentVariables().SMTP.USER || !getEnvironmentVariables().SMTP.PASSWORD || !getEnvironmentVariables().urls.api) {

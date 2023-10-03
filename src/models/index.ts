@@ -1,6 +1,7 @@
 export { User } from './user/userModel';
 export { Article } from './article/articleModel';
 export { Comment } from './comment/commentModel';
+export { Token } from './token/tokenModel';
 
 export type {
     IUser,

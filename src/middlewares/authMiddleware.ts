@@ -1,7 +1,7 @@
 import { NextFunction, Response } from 'express';
-import { RequestWithAuthUser, UserDto } from 'models';
-import { tokenService } from 'services/tokenService/tokenService';
-import { ApiError } from 'utils/erros/cutomErrors';
+import { RequestWithAuthUser, UserDto } from '@src/models';
+import { tokenService } from '@src/services/tokenService/tokenService';
+import { ApiError } from '@src/utils/erros/cutomErrors';
 
 export const authMiddleware = (
     req: RequestWithAuthUser,

@@ -1,6 +1,6 @@
 import { Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { RequestWithAuthUser, User } from 'models';
+import { RequestWithAuthUser, User } from '@src/models';
 
 export const getDataController = async (
     req: RequestWithAuthUser,

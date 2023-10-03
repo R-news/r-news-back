@@ -1,8 +1,8 @@
-import { User } from 'models';
-import type { UserDto } from 'models';
-import { tokenService } from 'services/tokenService/tokenService';
-import { ApiError } from 'utils/erros/cutomErrors';
-import { getUserWithTokens } from 'utils/helpers';
+import { User } from '@src/models';
+import type { UserDto } from '@src/models';
+import { tokenService } from '@src/services/tokenService/tokenService';
+import { ApiError } from '@src/utils/erros/cutomErrors';
+import { getUserWithTokens } from '@src/utils/helpers';
 
 export const refresh = async (refreshToken: string) => {
     if (!refreshToken) {

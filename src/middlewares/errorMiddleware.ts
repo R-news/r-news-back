@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { ApiError } from 'utils/erros/cutomErrors';
+import { ApiError } from '@src/utils/erros/cutomErrors';
 
 export const errorMiddleware = (
     err: unknown,

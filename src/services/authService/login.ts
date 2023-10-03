@@ -1,7 +1,7 @@
-import { User } from 'models';
-import { ApiError } from 'utils/erros/cutomErrors';
+import { User } from '@src/models';
+import { ApiError } from '@src/utils/erros/cutomErrors';
 import bcrypt from 'bcrypt';
-import { getUserWithTokens } from 'utils/helpers';
+import { getUserWithTokens } from '@src/utils/helpers';
 
 export const login = async (email: string, password: string) => {
     const user = await User.findOne({ email });

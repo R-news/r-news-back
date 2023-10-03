@@ -1,5 +1,5 @@
-import { User } from 'models';
-import { ApiError } from 'utils/erros/cutomErrors';
+import { User } from '@src/models';
+import { ApiError } from '@src/utils/erros/cutomErrors';
 
 export const activate = async (activationLink: string) => {
     const user = await User.findOne({ activationLink });

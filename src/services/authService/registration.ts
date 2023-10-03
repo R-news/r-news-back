@@ -1,8 +1,8 @@
-import { User } from 'models';
+import { User } from '@src/models';
 import { v4 as uuidv4 } from 'uuid';
-import { mailService } from 'services/mailService/mailService';
-import { ApiError } from 'utils/erros/cutomErrors';
-import { getUserWithTokens } from 'utils/helpers';
+import { mailService } from '@src/services/mailService/mailService';
+import { ApiError } from '@src/utils/erros/cutomErrors';
+import { getUserWithTokens } from '@src/utils/helpers';
 
 const { API_URL } = process.env;
 

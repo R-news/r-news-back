@@ -1,8 +1,8 @@
 import { Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
-import { RequestWithAuthUser, User } from 'models';
-import { articlePipelines } from 'utils/pipelines/articlePipelines';
+import { RequestWithAuthUser, User } from '@src/models';
+import { articlePipelines } from '@src/utils/pipelines/articlePipelines';
 
 export const getUserBookmarksController = async (
     req: RequestWithAuthUser,
