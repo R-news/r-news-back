@@ -1,12 +1,15 @@
 import mongoose from "mongoose";
+import swaggerDocs from '@src/utils/swagger';
 
 import app from "./main";
 import { getEnvironmentVariables } from "@src/environments/environment";
 
+const port = getEnvironmentVariables().port
 mongoose.connect(getEnvironmentVariables().db_host)
   .then(() => {
-    app.listen(getEnvironmentVariables().port, () => {
-      console.log(`Server running. Use our API on port: ${getEnvironmentVariables().port}`)
+    app.listen(port, () => {
+      console.log(`Server running. Use our API on port: ${port}`)
+      swaggerDocs(app, port)
     })
   })
   .catch(error => {

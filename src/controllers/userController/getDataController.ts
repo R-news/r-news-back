@@ -12,6 +12,7 @@ export const getDataController = async (
         isPremium: 1,
         avatar: 1,
         likes: 1,
+        setting: 1,
         _id: 0,
     });
 
