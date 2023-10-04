@@ -1,9 +1,9 @@
-import { registrationController } from './registrationController';
 import { activateController } from './activateController';
-import { logoutController } from './logoutController';
+import { logoutController } from './logoutController/logoutController';
 import { refreshController } from './refreshController';
-import { loginController } from './loginController';
+import { loginController } from './loginController/loginController';
 import { asyncWrapper } from '@src/utils/erros/asyncWrapper';
+import { registrationController } from './registrationController/registrationController';
 
 const authController = {
     registration: asyncWrapper(registrationController),

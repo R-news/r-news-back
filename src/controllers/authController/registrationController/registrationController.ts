@@ -17,8 +17,8 @@ export const registrationController = async (req: Request, res: Response) => {
         sameSite: 'lax',
     });
 
-    return res.status(StatusCodes.OK).json({
-        code: StatusCodes.OK,
+    return res.status(StatusCodes.CREATED).json({
+        code: StatusCodes.CREATED,
         status: 'success',
         userData,
     });

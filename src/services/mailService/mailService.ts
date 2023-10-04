@@ -17,6 +17,9 @@ const transporter = nodemailer.createTransport({
 });
 export const mailService = {
     sendActivationEmail: async (to: string, link: string) => {
+        if(process.env.testEnabled){
+            return
+        }
         await transporter.sendMail({
             from: getEnvironmentVariables().SMTP.USER,
             to,
