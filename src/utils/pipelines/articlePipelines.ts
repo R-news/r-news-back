@@ -28,8 +28,9 @@ export const articlePipelines = {
                     subtitle: 1,
                     views: 1,
                     img: 1,
-                    'user.username': 1, // Select the username field from the user object
-                    'user.avatar': 1, // Select the avatar field from the user object
+                    'user._id': 1,
+                    'user.username': 1,
+                    'user.avatar': 1, 
                     likes: 1,
                     comments: { $size: '$comments' },
                     createdAt: 1,

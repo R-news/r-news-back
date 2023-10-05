@@ -11,6 +11,8 @@ export const likeArticle = async (articleId: string, userId: string) => {
         if(!articleExist){
             throw ApiError.BadRequestError('Article not found.');
         }
+
+        
         const isLikedByUser = articleExist.likes.includes(userId);
 
         if (isLikedByUser) {

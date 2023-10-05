@@ -1,4 +1,5 @@
 import { articleController } from '@src/controllers/articleController';
+import { validateObjectId } from '@src/utils/erros/validateObjectId';
 import { Router } from 'express';
 
 export const router = Router();
@@ -33,3 +34,4 @@ export const router = Router();
  *         description: Internal server error.
  */
 router.get('/home', articleController.getMainPageArticles);
+router.get('/:articleId', validateObjectId, articleController.getArticleById);
