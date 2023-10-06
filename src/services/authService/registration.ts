@@ -1,6 +1,6 @@
 import { User } from '@src/models';
 import { v4 as uuidv4 } from 'uuid';
-import { mailService } from '@src/services/mailService/mailService';
+// import { mailService } from '@src/services/mailService/mailService';
 import { ApiError } from '@src/utils/erros/cutomErrors';
 import { getUserWithTokens } from '@src/utils/helpers';
 
@@ -28,11 +28,11 @@ export const registration = async (
         email,
         password,
         username,
-        activationLink: id,
+        activationLink: activationLink,
         role: 'user',
     });
 
-    await mailService.sendActivationEmail(email, activationLink);
+    // await mailService.sendActivationEmail(email, activationLink);
 
     return await getUserWithTokens(user);
 };
