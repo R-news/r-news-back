@@ -69,6 +69,7 @@ export const tokenService = {
     validateRefreshToken(token: string) {
         try {
             const userData = jwt.verify(token, getEnvironmentVariables().jwt_refresh_secret_key);
+            console.log('ISTRUE')
             return userData;
         } catch {
             throw ApiError.AuthorizationError();

@@ -10,6 +10,7 @@ export const refresh = async (refreshToken: string) => {
     }
 console.log(refreshToken)
     const userData = tokenService.validateRefreshToken(refreshToken) as UserDto;
+    console.log('isValidate')
 
     const token = await tokenService.findToken(refreshToken);
 
