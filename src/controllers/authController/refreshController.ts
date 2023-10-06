@@ -16,8 +16,7 @@ export const refreshController = async (req: Request, res: Response) => {
         maxAge: REFRESH_EXPIRES_IN_MILLI_SECONDS,
         httpOnly: true, //TODO SECURE,
         secure: process.env.NODE_ENV === 'development' ? false : true,
-        sameSite: 'lax',
-    });
+        sameSite: process.env.NODE_ENV === 'development' ? 'lax' : 'none',    });
 
     return res.status(StatusCodes.OK).json({
         code: StatusCodes.OK,

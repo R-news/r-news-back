@@ -13,7 +13,7 @@ export const loginController = async (req: Request, res: Response) => {
     res.cookie(REFRESH_TOKEN, userData.refreshToken, {
         maxAge: REFRESH_EXPIRES_IN_MILLI_SECONDS,
         secure: process.env.NODE_ENV === 'development' ? false : true,
-        sameSite: 'lax',
+        sameSite: process.env.NODE_ENV === 'development' ? 'lax' : 'none',
     });
 
     return res.status(StatusCodes.OK).json({
