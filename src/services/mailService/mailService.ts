@@ -7,8 +7,10 @@ if (!getEnvironmentVariables().SMTP.HOST || !getEnvironmentVariables().SMTP.PORT
 }
 
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    //@ts-ignore
+    host: getEnvironmentVariables().SMTP.HOST,
+    port:  getEnvironmentVariables().SMTP.PORT,
     secure: true,
     auth: {
         user: getEnvironmentVariables().SMTP.USER,
