@@ -39,10 +39,13 @@ export const tokenService = {
     saveToken: async (userId: ObjectId, refreshToken: string) => {
         const tokenData = await Token.findOne({ user: userId });
         if (tokenData) {
+       
             tokenData.refreshToken = refreshToken;
+            console.log('token updated', refreshToken)
             return await tokenData.save();
         }
 
+        console.log('token created', refreshToken)
         const token = await Token.create({ user: userId, refreshToken });
 
         return token;
