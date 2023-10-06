@@ -4,8 +4,8 @@
   "description": "news-server",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && node -r tsconfig-paths/register ./dist/src/server.js",
-    "dev": "nodemon",
+    "start": "cross-env NODE_ENV=production npm run build && node -r tsconfig-paths/register ./dist/src/server.js",
+    "dev": "cross-env NODE_ENV=development nodemon",
     "lint:ts": "eslint \"**/*.ts\"",
     "lint:ts:fix": "eslint \"**/*.ts\" --fix",
     "test:unit": "jest --watch",
