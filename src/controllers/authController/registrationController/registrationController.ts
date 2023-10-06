@@ -16,11 +16,15 @@ export const registrationController = async (req: Request, res: Response) => {
         httpOnly: true, //TODO SECURE,
         secure: process.env.NODE_ENV === 'development' ? false : true,
         sameSite: 'lax',
-    });
-
-    return res.status(StatusCodes.CREATED).json({
+    }).status(StatusCodes.CREATED).json({
         code: StatusCodes.CREATED,
         status: 'success',
         userData,
     });
+
+    // return res.status(StatusCodes.CREATED).json({
+    //     code: StatusCodes.CREATED,
+    //     status: 'success',
+    //     userData,
+    // });
 };

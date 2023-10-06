@@ -7,6 +7,7 @@ export const errorMiddleware = (
     res: Response,
     next: NextFunction,
 ) => {
+    console.log(err)
     if (err instanceof ApiError) {
         return res
             .status(err.status)
@@ -14,6 +15,5 @@ export const errorMiddleware = (
     }
 
     next();
-    console.log(err);
     return res.status(500).json({ message: 'Unexpected error' });
 };
