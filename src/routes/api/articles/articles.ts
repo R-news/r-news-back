@@ -34,4 +34,4 @@ export const router = Router();
  *         description: Internal server error.
  */
 router.get('/home', articleController.getMainPageArticles);
-router.get('/:articleId', validateObjectId, articleController.getArticleById);
+router.get('/:id', validateObjectId, articleController.getArticleById);
