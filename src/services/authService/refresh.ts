@@ -14,11 +14,16 @@ console.log(refreshToken)
 
     const token = await tokenService.findToken(refreshToken);
 
+
+    console.log('userData', userData)
+    console.log('token', token)
+    console.log(!userData && !token)
     if (!userData || !token) {
         throw ApiError.AuthorizationError();
     }
     const user = await User.findById(userData.id);
 
+    console.log(user)
     if (!user) {
         throw ApiError.AuthorizationError();
     }
