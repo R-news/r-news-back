@@ -7,7 +7,6 @@ import {
 } from '@src/utils/const/tokensExpiresInMilliseconds';
 
 export const refreshController = async (req: Request, res: Response) => {
-    try{
     const { refreshToken } = req.cookies;
 
     const userData = await authService.refresh(refreshToken);
@@ -24,7 +23,5 @@ export const refreshController = async (req: Request, res: Response) => {
         status: 'success',
         userData,
     });
-}catch(e){
-    console.log(1, e)
-}
+
 };
