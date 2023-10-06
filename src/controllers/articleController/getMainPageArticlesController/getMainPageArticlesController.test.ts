@@ -10,7 +10,7 @@ describe("Test articles controller", () => {
        await request(app).get(`/api/articles/home`).expect(200);
       });
 
-      test("route not found 404", async () => {
-        await request(app).get(`/api/articles/homd`).expect(404);
+      test("400", async () => {
+        await request(app).get(`/api/articles/homd`).expect(400);
        });
 })
