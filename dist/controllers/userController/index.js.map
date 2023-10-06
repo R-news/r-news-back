@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../src/controllers/userController/index.ts"],"names":[],"mappings":";;;AAAA,mEAAgE;AAChE,2DAAwD;AACxD,yDAAgE;AAChE,mEAAgE;AAEnD,QAAA,cAAc,GAAG;IAC1B,OAAO,EAAE,qCAAiB;IAC1B,IAAI,EAAE,6CAAqB;IAC3B,WAAW,EAAE,6CAAqB;IAClC,gBAAgB,EAAE,6CAA0B;CAC/C,CAAC"}

@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import swaggerDocs from '@src/utils/swagger';
+import swaggerDocs from './utils/swagger';
 
 import app from "./main";
 import { getEnvironmentVariables } from "@src/environments/environment";

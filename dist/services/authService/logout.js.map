@@ -1,1 +1,0 @@
-{"version":3,"file":"logout.js","sourceRoot":"","sources":["../../../src/services/authService/logout.ts"],"names":[],"mappings":";;;AAAA,0EAAuE;AAEhE,MAAM,MAAM,GAAG,KAAK,EAAE,YAAoB,EAAE,EAAE;IACjD,MAAM,KAAK,GAAG,MAAM,2BAAY,CAAC,WAAW,CAAC,YAAY,CAAC,CAAC;IAC3D,OAAO,KAAK,CAAC;AACjB,CAAC,CAAC;AAHW,QAAA,MAAM,UAGjB"}
