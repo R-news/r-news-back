@@ -19,20 +19,25 @@ const transporter = nodemailer.createTransport({
 });
 export const mailService = {
     sendActivationEmail: async (to: string, link: string) => {
-        if(process.env.testEnabled){
-            return
+        try{
+            if(process.env.testEnabled){
+                return
+            }
+            await transporter.sendMail({
+                from: getEnvironmentVariables().SMTP.USER,
+                to,
+                subject: `Account activation on the ${getEnvironmentVariables().urls.api}`,
+                text: '',
+                html: `
+                <div>
+                <h1>Activation link</h1>
+                <a href="${link}">${link}</a>
+                </div>
+                `,
+            });
+        }catch(e){
+            console.log(e)
         }
-        await transporter.sendMail({
-            from: getEnvironmentVariables().SMTP.USER,
-            to,
-            subject: `Account activation on the ${getEnvironmentVariables().urls.api}`,
-            text: '',
-            html: `
-            <div>
-            <h1>Activation link</h1>
-            <a href="${link}">${link}</a>
-            </div>
-            `,
-        });
+      
     },
 };
