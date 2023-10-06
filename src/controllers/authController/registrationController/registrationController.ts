@@ -13,7 +13,7 @@ export const registrationController = async (req: Request, res: Response) => {
 
     res.cookie(REFRESH_TOKEN, userData.refreshToken, {
         maxAge: REFRESH_EXPIRES_IN_MILLI_SECONDS,
-        httpOnly: true, //TODO SECURE,
+        httpOnly: false, //TODO SECURE,
         sameSite: 'lax',
     });
 
