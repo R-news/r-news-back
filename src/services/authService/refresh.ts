@@ -8,7 +8,7 @@ export const refresh = async (refreshToken: string) => {
     if (!refreshToken) {
         throw ApiError.AuthorizationError();
     }
-
+console.log(refreshToken)
     const userData = tokenService.validateRefreshToken(refreshToken) as UserDto;
 
     const token = await tokenService.findToken(refreshToken);

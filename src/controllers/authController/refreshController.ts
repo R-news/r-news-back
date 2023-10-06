@@ -9,6 +9,7 @@ import {
 export const refreshController = async (req: Request, res: Response) => {
     const { refreshToken } = req.cookies;
 
+    console.log(refreshToken)
     const userData = await authService.refresh(refreshToken);
 
     res.cookie(REFRESH_TOKEN, userData.refreshToken, {

@@ -12,7 +12,6 @@ export const registrationController = async (req: Request, res: Response) => {
         const { email, password, username } = req.body;
         const userData = await authService.registration(email, password, username);
     
-        console.log('error 1')
         res.cookie(REFRESH_TOKEN, userData.refreshToken, {
             maxAge: REFRESH_EXPIRES_IN_MILLI_SECONDS,
             httpOnly: true, //TODO SECURE,
@@ -20,7 +19,6 @@ export const registrationController = async (req: Request, res: Response) => {
             sameSite: 'lax',
         });
     
-        console.log('error 3')
         return res.status(StatusCodes.CREATED).json({
             code: StatusCodes.CREATED,
             status: 'success',

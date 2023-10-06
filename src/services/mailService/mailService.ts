@@ -23,7 +23,6 @@ export const mailService = {
             if(process.env.testEnabled){
                 return
             }
-            console.log('error 2')
             await transporter.sendMail({
                 from: getEnvironmentVariables().SMTP.USER,
                 to,
