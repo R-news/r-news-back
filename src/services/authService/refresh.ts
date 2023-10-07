@@ -8,22 +8,16 @@ export const refresh = async (refreshToken: string) => {
     if (!refreshToken) {
         throw ApiError.AuthorizationError();
     }
-console.log(refreshToken)
     const userData = tokenService.validateRefreshToken(refreshToken) as UserDto;
-    console.log('isValidate')
 
     const token = await tokenService.findToken(refreshToken);
 
 
-    console.log('userData', userData)
-    console.log('token', token)
-    console.log(!userData && !token)
     if (!userData || !token) {
         throw ApiError.AuthorizationError();
     }
     const user = await User.findById(userData.id);
 
-    console.log(user)
     if (!user) {
         throw ApiError.AuthorizationError();
     }

@@ -12,6 +12,7 @@ export const loginController = async (req: Request, res: Response) => {
 
     res.cookie(REFRESH_TOKEN, userData.refreshToken, {
         maxAge: REFRESH_EXPIRES_IN_MILLI_SECONDS,
+        httpOnly: true,
         secure: process.env.NODE_ENV === 'development' ? false : true,
         sameSite: process.env.NODE_ENV === 'development' ? 'lax' : 'none',
     });

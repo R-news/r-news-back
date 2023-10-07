@@ -41,11 +41,9 @@ export const tokenService = {
         if (tokenData) {
        
             tokenData.refreshToken = refreshToken;
-            console.log('token updated', refreshToken)
             return await tokenData.save();
         }
 
-        console.log('token created', refreshToken)
         const token = await Token.create({ user: userId, refreshToken });
 
         return token;
@@ -72,7 +70,6 @@ export const tokenService = {
     validateRefreshToken(token: string) {
         try {
             const userData = jwt.verify(token, getEnvironmentVariables().jwt_refresh_secret_key);
-            console.log('ISTRUE')
             return userData;
         } catch {
             throw ApiError.AuthorizationError();
