@@ -16,7 +16,7 @@ describe("Test user controller", () => {
       });
 
       
-      test("No token", async () => {
+      test("userData error  401 - no token", async () => {
         const { statusCode} = await request(app).get(`/api/user/data`)
         expect(statusCode).toBe(401);
       });
@@ -27,5 +27,10 @@ describe("Test user controller", () => {
         const { statusCode} = await request(app).get(`/api/user/bookmarks`).set('Authorization', `Bearer ${body.userData.accessToken}`);;
 
         expect(statusCode).toBe(200);
+      });
+
+      test("bookmarks error  401 - no token", async () => {
+        const { statusCode} = await request(app).get(`/api/user/bookmarks`)
+        expect(statusCode).toBe(401);
       });
 })

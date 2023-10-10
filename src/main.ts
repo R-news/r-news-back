@@ -5,7 +5,7 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
 dotenv.config({ path: '.env' });
-import { articlesRouter, authRouter, serviceRouter, userRouter } from '@src/routes/api';
+import { articlesRouter, authRouter, serviceRouter, userRouter, profileRouter } from '@src/routes/api';
 import { getEnvironmentVariables } from '@src/environments/environment';
 import { errorMiddleware } from '@src/middlewares/errorMiddleware';
 
@@ -25,7 +25,7 @@ app.use('/api/service', serviceRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/articles', articlesRouter);
 app.use('/api/user', userRouter);
-
+app.use('/api/profile', profileRouter);
 app.use(errorMiddleware);
 
 export default app;

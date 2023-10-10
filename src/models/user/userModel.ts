@@ -38,10 +38,28 @@ const userSchema = new Schema<IUser>(
                 ref: 'Article',
             },
         ],
+        subscribtions: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'User',
+            }, 
+        ],
+        subscribers: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'User',
+            }, 
+        ],
+        rating: {
+            type: Number,
+        },
         settings: {
             type: Object,
             default: {},
         },
+        about: {
+            type: String,
+        }  
     },
     { timestamps: true },
 );
