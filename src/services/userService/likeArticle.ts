@@ -22,7 +22,7 @@ export const likeArticle = async (articleId: string, userId: string) => {
                 { new: true },
             );
 
-            await Article.findOneAndUpdate(
+            article = await Article.findOneAndUpdate(
                 { _id: articleId },
                 { $pull: { likes: userId } },
                 { new: true },

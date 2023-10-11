@@ -82,7 +82,7 @@
  *                       type: array
  *                       default: []
  *                       description: array of articles id.
- *                     setting:
+ *                     settings:
  *                       type: object
  *                       description: User settings.
  *    UserAuthData:
@@ -100,4 +100,5 @@
  *                     role:
  *                       type: string
  *                       description: User role.
+ * 
  */
