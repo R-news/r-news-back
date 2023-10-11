@@ -1,5 +1,4 @@
 import { ArticleType } from '@src/models/article/types/artilceEnums';
-import { validateIdInJoiSchema } from '@src/utils/erros/validateJoiId';
 import Joi from 'joi'
 
 export const codeSchema = Joi.object({
@@ -34,7 +33,6 @@ export const createArticleJoi = Joi.object({
     subtitle: Joi.string().max(300).min(5).optional(),
     img: Joi.string().optional(),
     type: Joi.string().valid(...Object.values(ArticleType)).required(),
-    userId: Joi.string().custom((value, helpers) => validateIdInJoiSchema(value, helpers)).required(),
     blocks: Joi.array().items(
         Joi.alternatives().try(codeSchema, textSchema, videoSchema, imageSchema)
     ).min(1).required(),

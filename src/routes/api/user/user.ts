@@ -52,7 +52,7 @@ export const router = Router();
  *         description: Internal server error.
  */
 router.get('/data', authMiddleware, userController.getData);
-router.get('/bookmarks', authMiddleware, validateBody(createArticleJoi), userController.getUserBookmarks);
+router.get('/bookmarks', authMiddleware, userController.getUserBookmarks);
 
 /**
  * @openapi
@@ -131,4 +131,4 @@ router.get('/bookmarks', authMiddleware, validateBody(createArticleJoi), userCon
 router.patch('/like/:id', authMiddleware, userController.like);
 router.patch('/addBookmark/:id', authMiddleware, userController.addBookmark);
 
-router.post('/create', authMiddleware, userController.createArticle);
+router.post('/create', authMiddleware, validateBody(createArticleJoi), userController.createArticle);
