@@ -1,6 +1,6 @@
 import { asyncWrapper } from '@src/utils/erros/asyncWrapper';
 import { bookmarkAddController } from './bookmarkAddController';
-import { createArticleController } from './createArticleController';
+import { createArticleController } from '../articleController/createArticleController/createArticleController';
 import { getDataController } from './getDataController';
 import { getUserBookmarksController } from './getUserBookmarks';
 import { likeArticleController } from './likeArticleController';

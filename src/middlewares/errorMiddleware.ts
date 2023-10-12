@@ -13,7 +13,5 @@ export const errorMiddleware = (
             .status(err.status)
             .json({ message: err.message, errors: err.errors });
     }
-
-    next();
-    return res.status(500).json({ message: 'Unexpected error' });
+    next(res.status(500).json({ message: 'Unexpected error' }));
 };

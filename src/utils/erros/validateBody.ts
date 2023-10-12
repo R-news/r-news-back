@@ -9,7 +9,6 @@ export const validateBody = (schema:any) => async (req:Request, res:Response, ne
     } catch (error) {
       error.statusCode = StatusCodes.BAD_REQUEST
   
-      console.log(1)
-      next(error);
+      next(res.status(400).json({ message: error }))
     }
   };

@@ -1,8 +1,6 @@
 import { userController } from '@src/controllers/userController';
 import { Router } from 'express';
 import { authMiddleware } from '@src/middlewares/authMiddleware';
-import { validateBody } from '@src/utils/erros/validateBody';
-import { createArticleJoi } from '@src/middlewares/joi/user/user';
 
 export const router = Router();
 
@@ -131,4 +129,3 @@ router.get('/bookmarks', authMiddleware, userController.getUserBookmarks);
 router.patch('/like/:id', authMiddleware, userController.like);
 router.patch('/addBookmark/:id', authMiddleware, userController.addBookmark);
 
-router.post('/create', authMiddleware, validateBody(createArticleJoi), userController.createArticle);

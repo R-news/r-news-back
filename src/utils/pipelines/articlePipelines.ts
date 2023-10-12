@@ -3,6 +3,40 @@ import {ObjectId } from 'mongodb'
 
 
 export const articlePipelines = {
+  getPopularArticlesWithUsernameAndAvatar: () : PipelineStage[] => [
+    {
+        $sort: { likes: -1 },
+    },
+    {
+        $limit: 10,
+    },
+    {
+        $lookup: {
+            from: 'users',
+            localField: 'userId',
+            foreignField: '_id',
+            as: 'user',
+        },
+    },
+    {
+        $unwind: '$user', // Unwind the user array
+    },
+    {
+        $project: {
+            _id: 1,
+            title: 1,
+            subtitle: 1,
+            views: 1,
+            img: 1,
+            'user._id': 1,
+            'user.username': 1,
+            'user.avatar': 1, 
+            likes: 1,
+            comments: { $size: '$comments' },
+            createdAt: 1,
+        },
+    },
+],
    getArticlesWithUsernameAndAvatar: () : PipelineStage[] => [
             {
                 $sort: { createdAt: -1 },

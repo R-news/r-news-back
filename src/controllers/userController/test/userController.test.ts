@@ -22,7 +22,6 @@ describe("Test user controller", () => {
       });
 
       test("should return user bookmarks with 200", async () => {
-        await registerTestUser()
         const { body} = await loginTestUser()
         const { statusCode} = await request(app).get(`/api/user/bookmarks`).set('Authorization', `Bearer ${body.userData.accessToken}`);;
 
@@ -31,6 +30,12 @@ describe("Test user controller", () => {
 
       test("bookmarks error  401 - no token", async () => {
         const { statusCode} = await request(app).get(`/api/user/bookmarks`)
+        expect(statusCode).toBe(401);
+      });
+
+      test("create article", async () => {
+        const { body} = await loginTestUser()
+        const { statusCode} = await request(app).get(`/api/articles/create`).set('Authorization', `Bearer ${body.userData.accessToken}`)
         expect(statusCode).toBe(401);
       });
 })
