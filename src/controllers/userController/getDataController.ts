@@ -13,6 +13,7 @@ export const getDataController = async (
         avatar: 1,
         likes: 1,
         settings: 1,
+        subscriptions: 1,
         _id: 0,
     });
 

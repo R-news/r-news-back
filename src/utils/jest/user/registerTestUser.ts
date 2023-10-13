@@ -6,7 +6,8 @@ const userInput = {
     username: "Jane Doe",
     password: "Password123",
   };
+
   
-export const registerTestUser = async () => {
-    return  await request(app).post(`/api/auth/registration`).send(userInput);
+export const registerTestUser = async (user = userInput) => {
+    return  await request(app).post(`/api/auth/registration`).send(user);
 }

@@ -36,7 +36,7 @@ const userSchema = new Schema<IUser>(
                 ref: 'Article',
             },
         ],
-        subscribtions: [
+        subscriptions: [
             {
                 type: Schema.Types.ObjectId,
                 ref: 'User',

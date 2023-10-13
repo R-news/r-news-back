@@ -126,8 +126,41 @@ router.get('/bookmarks', authMiddleware, userController.getUserBookmarks);
  *         description: Unauthorized request.
  *       500:
  *         description: Internal server error.
+ * /api/user/subscribe/{id}:
+ *   patch:
+ *     summary: Subscribe to another user
+ *     description: Subscribe to another user by its ID.
+ *     tags:
+ *       - User
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         description: The ID of user.
+ *         required: true
+ *         schema:
+ *           type: string
+ *     security:
+ *       - bearerAuth: []  
+ *     responses:
+ *       200:
+ *         description: Successful response.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 code:
+ *                   type: integer
+ *                   description: HTTP status code for the response (200 for success).
+ *                   default: 200
+ *                 status:
+ *                   type: string
+ *                   description: A string indicating the status of the response.
+ *       401:
+ *         description: Unauthorized request.
+ *       500:
+ *         description: Internal server error.
  */
 router.patch('/like/:id', validateObjectId, authMiddleware, userController.like);
 router.patch('/addBookmark/:id', validateObjectId, authMiddleware, userController.addBookmark);
-
 router.patch('/subscribe/:id',validateObjectId, authMiddleware, userController.subscribe);

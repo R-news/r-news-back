@@ -19,7 +19,7 @@ export const subscribe = async (subscribingId: string, userId: ObjectId) => {
         if (alreadySub) {
           user = await User.findOneAndUpdate(
                 { _id: userId },
-                { $pull: { subscribers: subscribingId } },
+                { $pull: { subscriptions: subscribingId } },
                 { new: true },
             );
 
@@ -31,7 +31,7 @@ export const subscribe = async (subscribingId: string, userId: ObjectId) => {
         } else {
             user = await User.findOneAndUpdate(
                 { _id: userId },
-                { $addToSet: { subscribers: subscribingId } },
+                { $addToSet: { subscriptions: subscribingId } },
                 { new: true },
             );
 

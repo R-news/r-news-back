@@ -23,7 +23,7 @@ export interface IUser {
     bookmarks: Array<ObjectId | string>;
     likes: Array<ObjectId>;
     subscribers: Array<ObjectId>;
-    subscribtions: Array<ObjectId>;
+    subscriptions: Array<ObjectId>;
     settings: Settings;
 }
 

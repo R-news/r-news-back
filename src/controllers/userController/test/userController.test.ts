@@ -23,7 +23,7 @@ describe("Test user controller", () => {
 
       test("should return user bookmarks with 200", async () => {
         const { body} = await loginTestUser()
-        const { statusCode} = await request(app).get(`/api/user/bookmarks`).set('Authorization', `Bearer ${body.userData.accessToken}`);;
+        const { statusCode} = await request(app).get(`/api/user/bookmarks`).set('Authorization', `Bearer ${body.userData.accessToken}`);
 
         expect(statusCode).toBe(200);
       });
@@ -33,9 +33,20 @@ describe("Test user controller", () => {
         expect(statusCode).toBe(401);
       });
 
-      test("create article", async () => {
-        const { body} = await loginTestUser()
-        const { statusCode} = await request(app).get(`/api/articles/create`).set('Authorization', `Bearer ${body.userData.accessToken}`)
-        expect(statusCode).toBe(401);
+      test("subscribe for another user by id", async () => {
+        const { body: firstUserBody} = await loginTestUser()
+        const {body: secondUserBody} = await registerTestUser({
+          email: "test1@example.com",
+          username: "Jane Doe",
+          password: "111111",
+        })
+        const {body:subscribe} = await request(app).patch(`/api/user/subscribe/${secondUserBody.userData.id}`).set('Authorization', `Bearer ${firstUserBody.userData.accessToken}`);
+        expect(subscribe.user.subscriptions.length).toBe(1);
+
+        const {body:unsubscribe,statusCode} = await request(app).patch(`/api/user/subscribe/${secondUserBody.userData.id}`).set('Authorization', `Bearer ${firstUserBody.userData.accessToken}`);
+        expect(unsubscribe.user.subscriptions.length).toBe(0);
+
+        expect(statusCode).toBe(200);
       });
+
 })
