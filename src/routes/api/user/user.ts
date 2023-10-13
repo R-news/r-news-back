@@ -1,6 +1,7 @@
 import { userController } from '@src/controllers/userController';
 import { Router } from 'express';
 import { authMiddleware } from '@src/middlewares/authMiddleware';
+import { validateObjectId } from '@src/utils/erros/validateObjectId';
 
 export const router = Router();
 
@@ -126,6 +127,7 @@ router.get('/bookmarks', authMiddleware, userController.getUserBookmarks);
  *       500:
  *         description: Internal server error.
  */
-router.patch('/like/:id', authMiddleware, userController.like);
-router.patch('/addBookmark/:id', authMiddleware, userController.addBookmark);
+router.patch('/like/:id', validateObjectId, authMiddleware, userController.like);
+router.patch('/addBookmark/:id', validateObjectId, authMiddleware, userController.addBookmark);
 
+router.patch('/subscribe/:id',validateObjectId, authMiddleware, userController.subscribe);
