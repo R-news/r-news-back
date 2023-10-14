@@ -5,6 +5,9 @@ import { ApiError } from '@src/utils/erros/cutomErrors';
 export const subscribe = async (subscribingId: string, userId: ObjectId) => {
     let user: object | null;
 
+    if(subscribingId === String(userId)){
+        throw ApiError.BadRequestError('You cant follow yourself.');
+    }
     const session = await mongoose.startSession();
     session.startTransaction();
     try {

@@ -10,7 +10,7 @@ describe("Test user controller", () => {
       test("should return userData with 200", async () => {
         await registerTestUser()
         const { body} = await loginTestUser()
-        const { statusCode} = await request(app).get(`/api/user/data`).set('Authorization', `Bearer ${body.userData.accessToken}`);;
+        const { statusCode} = await request(app).get(`/api/user/data`).set('Authorization', `Bearer ${body.userData.accessToken}`);
 
         expect(statusCode).toBe(200);
       });
@@ -40,11 +40,13 @@ describe("Test user controller", () => {
           username: "Jane Doe",
           password: "111111",
         })
-        const {body:subscribe} = await request(app).patch(`/api/user/subscribe/${secondUserBody.userData.id}`).set('Authorization', `Bearer ${firstUserBody.userData.accessToken}`);
-        expect(subscribe.user.subscriptions.length).toBe(1);
+       await request(app).patch(`/api/user/subscribe/${secondUserBody.userData.id}`).set('Authorization', `Bearer ${firstUserBody.userData.accessToken}`);
+        const {body:subscribe} = await request(app).get(`/api/user/data`).set('Authorization', `Bearer ${firstUserBody.userData.accessToken}`);
+        expect(subscribe.userData.subscriptions.length).toBe(1);
 
-        const {body:unsubscribe,statusCode} = await request(app).patch(`/api/user/subscribe/${secondUserBody.userData.id}`).set('Authorization', `Bearer ${firstUserBody.userData.accessToken}`);
-        expect(unsubscribe.user.subscriptions.length).toBe(0);
+        await request(app).patch(`/api/user/subscribe/${secondUserBody.userData.id}`).set('Authorization', `Bearer ${firstUserBody.userData.accessToken}`);
+        const {body:unsubscribe, statusCode} = await request(app).get(`/api/user/data`).set('Authorization', `Bearer ${firstUserBody.userData.accessToken}`);
+        expect(unsubscribe.userData.subscriptions.length).toBe(0);
 
         expect(statusCode).toBe(200);
       });
